@@ -1,0 +1,107 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style 1.css" />
+    <title>Document</title>
+</head>
+
+<body class="html">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+
+        <title>Drop-Down</title>
+        <meta name="description" content="Custom Drop-Down List Styling with CSS3" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="css/style 1.css" />
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
+        <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
+        <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
+    </head>
+
+    <body style="font-family:Arial, Helvetica, sans-serif;">
+        <div class="container">
+
+
+
+
+            <section class="main">
+                <div class="wrapper-demo">
+                    <div id="dd" class="wrapper-dropdown-3" tabindex="1">
+                        <span>Transport</span>
+                        <ul class="dropdown">
+
+                            <li class="f" style="background-image: url(img1.jpg); background-size: auto;">
+                                <a href="#">Devagovind</a>
+                            </li>
+                            <br>
+                            <li class="s" style="background-image:url(img2.jpg); background-size: auto;">
+                                <a href=" # ">Govind</a>
+                            </li><br>
+                            <li class="t" style="background-image:url(img3.jpg); background-size: auto;">
+                                <a href="#">CEP</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    ​</div>
+            </section>
+
+        </div>
+
+    </body>
+    <!-- jQuery if needed -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        function DropDown(el) {
+            this.dd = el;
+            this.placeholder = this.dd.children('span');
+            this.opts = this.dd.find('ul.dropdown > li');
+            this.val = '';
+            this.index = -1;
+            this.initEvents();
+        }
+        DropDown.prototype = {
+            initEvents: function() {
+                var obj = this;
+
+                obj.dd.on('click', function(event) {
+                    $(this).toggleClass('active');
+                    return false;
+                });
+
+                obj.opts.on('click', function() {
+                    var opt = $(this);
+                    obj.val = opt.text();
+                    obj.index = opt.index();
+                    obj.placeholder.text(obj.val);
+                });
+            },
+            getValue: function() {
+                return this.val;
+            },
+            getIndex: function() {
+                return this.index;
+            }
+        }
+
+        $(function() {
+
+            var dd = new DropDown($('#dd'));
+
+            $(document).click(function() {
+                // all dropdowns
+                $('.wrapper-dropdown-3').removeClass('active');
+            });
+
+        });
+    </script>
+
+    </html>
+</body>
+
+</html>
